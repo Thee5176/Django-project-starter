@@ -5,5 +5,4 @@
 ---
 1. `project/setting.py` : template dir, redirect url
 2. Create **4 Main Template** : base, home, login, signup
-3. URL routing
-4. Minimum Views setup (TemplateView for home, SignUpView)
+3. URL routing with Views setup (TemplateView for home, SignUpView)
