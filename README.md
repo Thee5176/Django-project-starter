@@ -4,7 +4,8 @@
 - [x] Config Staticfiles
 - [x] Add Bootstrap CDN
 - [x] UserAuthentication 2# (Password Management)
-- [ ] Config Email
+- [x] Config Email *Required: change email setting from [SendGrid](https://app.sendgrid.com/guide/integrate/langs/smtp#guide?integrate=true)
+    ** not working because not been hosted yet
 - [ ] Deployment setting (debug,host,secret key)
 - [ ] Database
 

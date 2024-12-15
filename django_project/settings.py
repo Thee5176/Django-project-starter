@@ -145,3 +145,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email Service
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = ""             #Required 1 : "Email address" that registered with SendGrid
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = ""            #Required 2 : "Password"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
