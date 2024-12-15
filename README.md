@@ -9,4 +9,5 @@
 - [ ] Deployment setting (debug,host,secret key)
 - [ ] Database
 
-
+## Issues
+- [ ] Admin page: create user not working
