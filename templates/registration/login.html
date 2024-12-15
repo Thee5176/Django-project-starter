@@ -9,6 +9,7 @@
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Log In" class="btn btn-success ml-2">
+        <p><a href="{% url "password_reset" %}" class="mt-2 warning">Forgot your password?</a></p>
     </form>
 </div>
 {% endblock content %}
