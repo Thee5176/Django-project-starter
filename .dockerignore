@@ -1,0 +1,45 @@
+# Ignore Python-related files
+*.pyc
+*.pyo
+*.mo
+__pycache__
+*.egg-info
+
+# Ignore database and SQL dump files
+*.db
+*.sql.gz
+
+# Ignore environment and configuration files
+.env
+src/{{ project_name }}/settings/local.py
+
+# Ignore temporary and cache files
+.cache
+.sass-cache
+logs
+dist
+
+# Ignore IDE and editor files
+.project
+.idea/
+.idea/workspace.xml
+.pydevproject
+.vagrant/
+
+# Ignore system files
+.DS_Store
+
+# Ignore version control files
+.git/
+
+# Ignore front-end-related files
+src/node_modules
+web/media
+web/static/CACHE
+
+# Ignore documentation and statistics
+docs
+stats
+
+# Ignore Dockerfile (if not needed in the image)
+Dockerfile
