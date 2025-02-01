@@ -9,8 +9,10 @@
     ** not working because not been hosted yet
 - [x] Deployment setting (debug,host,secret key)
 - [x] Database
+- [x] Django-debug-toolbars
 
 ## Post-set up checklist
 
 - [ ] migrate database
-- [ ]
+- [ ] setup SendGrid
+- [ ] setup Allauth-social Credential&Key
