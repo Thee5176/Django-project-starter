@@ -1,16 +1,8 @@
-{% extends "base.html" %}
-
-{% block title %}Home{% endblock title %}
+{% extends "_base.html" %}
+{% load static %}
+{% load i18n %}
 
 {% block content %}
-{% if user.is_authenticated %}
-    <div class="container">
-        <p>Hi, {{user.username}}!</p>
-        <p class='text-small'>You are {{user.age}} years old.</p>
-    </div>
-{% else %}
-    <div class="container">
-        <p class='text-small'>You are not logged in yet.</p>
-    </div>
-{% endif %}
+<h1 class="mt-3 bt-3">Homepage</h1>
+<hr />
 {% endblock content %}

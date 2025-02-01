@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     # bootstrap
     'crispy_forms',
     'crispy_bootstrap5',
+    # local
+    'accounts.apps.AccountsConfig',
     
 ]
 
@@ -168,6 +170,7 @@ EMAIL_USE_TLS = True
 
 # allauth setup
 # https://docs.allauth.org/en/latest/installation/quickstart.html
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
@@ -185,8 +188,6 @@ AUTHENTICATION_BACKEND = [
 ]
 
 SITE_ID = 1
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # allauth socialaccount
 

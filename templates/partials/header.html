@@ -1,0 +1,60 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid justify-content-between">
+      <!--Navbar Brand-->
+      <a class="navbar-brand logo-line" href="{% url 'home' %}">FastReckon</a>
+       <!--Navbar Toggler-->
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-controls="navbarSupportedContent" 
+        aria-label="Toggle navigation">
+        <span class="btn btn-sm navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--Nav Menu-->
+        <ul class="navbar-nav bs-auto mb-2 mgb-lg-0" >
+          {% if user.is_authenticated %}
+        
+          <!--Journal Menu-->
+          {% include "partials/journals_nav_menu.html" %}
+        
+          <!--Nav User-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> {{ user.username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url "edit_profile" user.pk %}">{% trans "Profile" %}</a></li>
+              <li><a class="dropdown-item disabled" href="#">{% trans "Setting" %}</a></li>
+              <li><a href="{% url 'account_password_change' %}" class="dropdown-item">{% trans "Change Password"%}</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url "account_logout" %}">{% trans "Logout" %}</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <!--Nav Pages-->
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "home" %}">{% trans "Home" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "about" %}">{% trans "About" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "account_login" %}">{% trans "Login" %}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "account_signup" %}">{% trans "Sign Up" %}</a>
+          </li>
+          {% endif %}
+            
+        </ul>
+      </div>
+      
+     
+    </div>
+  </nav>

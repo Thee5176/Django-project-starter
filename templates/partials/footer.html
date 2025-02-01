@@ -1,0 +1,21 @@
+{% load i18n %}
+
+<div class="m-3 row">
+    {% include "partials/language_selector.html" %}
+</div>
+<ul class="nav justify-content-center border-bottom pb-3 my-5">
+    <li class="nav-item"><a href="{% url "home" %}" class="nav-link px-2 text-muted">{% trans "Home" %}</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{% trans "Features" %}</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">{% trans "Pricing" %}</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+    <li class="nav-item"><a href="{% url "about" %}" class="nav-link px-2 text-muted">{% trans "About" %}</a></li>
+</ul>
+<p class="text-center text-muted">© <span id='footer-year'></span> Company, Inc. Allrights Reserved</p>
+
+<script>
+    var today = new Date()
+    var year = today.getFullYear()
+
+    var elYear = document.getElementById('footer-year')
+    elYear.textContent = year
+</script>
