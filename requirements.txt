@@ -1,7 +1,9 @@
 asgiref==3.8.1
+django-allauth==65.3.0
 crispy-bootstrap5==2024.10
 Django==5.1.4
 django-crispy-forms==2.3
+environs==11.2.1
 psycopg2-binary==2.9.10
 sqlparse==0.5.3
 whitenoise==6.8.2

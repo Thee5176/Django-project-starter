@@ -1,0 +1,87 @@
+{% extends "_base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+    {% trans "Email Addresses" %}
+{% endblock head_title %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="text-center mb-4">{% trans "Email Addresses" %}</h1>
+
+    <!-- Email List Section -->
+    {% if emailaddresses %}
+        <p class="text-muted text-center">
+            {% trans "The following email addresses are associated with your account:" %}
+        </p>
+        <form method="post" action="{% url 'account_email' %}">
+            {% csrf_token %}
+            <div class="list-group mb-4">
+                {% for radio in emailaddress_radios %}
+                {% with emailaddress=radio.emailaddress %}
+                <label class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="email" value="{{ emailaddress.email }}" id="{{ radio.id }}" {% if radio.checked %}checked{% endif %}>
+                        <strong>{{ emailaddress.email }}</strong>
+                        {% if emailaddress.verified %}
+                        <span class="badge bg-success ms-2">{% trans "Verified" %}</span>
+                        {% else %}
+                        <span class="badge bg-warning text-dark ms-2">{% trans "Unverified" %}</span>
+                        {% endif %}
+                        {% if emailaddress.primary %}
+                        <span class="badge bg-primary ms-2">{% trans "Primary" %}</span>
+                        {% endif %}
+                    </div>
+                </label>
+                {% endwith %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <button type="submit" name="action_primary" class="btn btn-primary me-2">
+                    {% trans "Make Primary" %}
+                </button>
+                <button type="submit" name="action_send" class="btn btn-secondary me-2">
+                    {% trans "Re-send Verification" %}
+                </button>
+                <button type="submit" name="action_remove" class="btn btn-danger">
+                    {% trans "Remove" %}
+                </button>
+            </div>
+        </form>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            {% trans "No email addresses are associated with your account." %}
+        </div>
+    {% endif %}
+
+    <!-- Add Email Section -->
+    {% if can_add_email %}
+    <hr class="my-4">
+    <h2 class="text-center">{% trans "Add Email Address" %}</h2>
+    <form method="post" action="{% url 'account_email' %}" class="mt-3">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <div class="text-center">
+            <button type="submit" name="action_add" class="btn btn-success">
+                {% trans "Add Email" %}
+            </button>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock content %}
+
+{% block extra_body %}
+<script>
+    (function() {
+        var message = "{% trans 'Do you really want to remove the selected email address?' %}";
+        document.querySelectorAll('button[name="action_remove"]').forEach(function(button) {
+            button.addEventListener("click", function(e) {
+                if (!confirm(message)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    })();
+</script>
+{% endblock extra_body %}
